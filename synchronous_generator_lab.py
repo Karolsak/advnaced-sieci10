@@ -135,7 +135,8 @@ class SynchronousGeneratorModel:
         diq_dt = (vq - Ra * iq - omega * Ld * id - omega * psi_f) / Lq
 
         # Field flux dynamics (simplified)
-        dpsi_f_dt = (self.params.Vfn - self.params.Rfn * self.params.Ifn) / 10
+        Rf_temp = self.params.Rf_20C * (1 + 0.00393 * (self.params.temp_field - 20))
+        dpsi_f_dt = (self.params.Vfn - Rf_temp * self.params.Ifn) / 10
 
         # Electromagnetic torque
         Te = 1.5 * self.params.p * (psi_f * iq + (Ld - Lq) * id * iq)

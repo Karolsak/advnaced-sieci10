@@ -65,8 +65,31 @@ pip install numpy matplotlib scipy
 
 ## Running the Application
 
+### ⚠️ IMPORTANT: Jupyter Notebook Users
+If you're running from **Jupyter Notebook**, you MUST restart the kernel after any code changes:
+1. Click: `Kernel` → `Restart Kernel`
+2. Re-run your cells
+
+Otherwise, Jupyter will use cached (old) versions of the code!
+
+### Method 1: Standalone Launcher (Recommended)
+```bash
+python3 run_gui.py
+```
+
+### Method 2: Direct Execution
 ```bash
 python3 synchronous_generator_lab.py
+```
+
+### Method 3: Calculations Only (No GUI Required)
+```bash
+python3 generator_core.py
+```
+
+### Method 4: Run Tests
+```bash
+python3 test_generator.py
 ```
 
 ## Features
@@ -251,22 +274,31 @@ This application demonstrates:
 
 ## Troubleshooting
 
-### Import Errors
-If you get import errors, ensure all dependencies are installed:
-```bash
-pip install --upgrade numpy matplotlib scipy
-```
+### ⚠️ Common Issues & Solutions
 
-### GUI Not Displaying
-Ensure tkinter is installed (usually comes with Python):
-- **Ubuntu/Debian**: `sudo apt-get install python3-tk`
-- **macOS**: Included with Python
-- **Windows**: Included with Python
+**See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for comprehensive troubleshooting guide!**
 
-### Slow Simulation
-- Use Euler solver instead of RK45 for faster (less accurate) results
-- Reduce simulation time or time steps
-- Close other applications to free up resources
+#### Quick Fixes:
+
+1. **AttributeError in Jupyter Notebook**
+   - **Solution**: Restart kernel (`Kernel` → `Restart Kernel`)
+   - Or run from terminal: `python3 run_gui.py`
+
+2. **Import Errors**
+   ```bash
+   pip install --upgrade numpy matplotlib scipy
+   ```
+
+3. **GUI Not Displaying**
+   - **Ubuntu/Debian**: `sudo apt-get install python3-tk`
+   - **macOS**: Included with Python
+   - **Windows**: Included with Python
+
+4. **Slow Simulation**
+   - Use Euler solver instead of RK45
+   - Reduce simulation time or time steps
+
+📖 **For detailed solutions, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
 
 ## Advanced Customization
 
