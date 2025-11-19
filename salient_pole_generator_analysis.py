@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 from scipy.optimize import fsolve
 from matplotlib.patches import FancyArrowPatch
 import matplotlib.patches as mpatches
+import os
+
+# Use current working directory for saving files
+output_dir = os.getcwd()
 
 # Given nominal parameters
 Sn = 25e6  # VA (apparent power)
@@ -441,10 +445,10 @@ for i in range(len(summary_data)):
 ax6.set_title('Summary of Results', fontsize=13, fontweight='bold', pad=20)
 
 plt.tight_layout()
-plt.savefig('/home/user/advnaced-sieci10/salient_pole_generator_analysis.png',
-            dpi=300, bbox_inches='tight')
+output_file = os.path.join(output_dir, 'salient_pole_generator_analysis.png')
+plt.savefig(output_file, dpi=300, bbox_inches='tight')
 print("\n" + "="*70)
-print("Visualization saved as: salient_pole_generator_analysis.png")
+print(f"Visualization saved as: {output_file}")
 print("="*70)
 
 plt.show()
@@ -493,8 +497,9 @@ ax.axhline(0, color='k', linewidth=0.5)
 ax.axvline(0, color='k', linewidth=0.5)
 
 plt.tight_layout()
-plt.savefig('/home/user/advnaced-sieci10/capability_curve.png', dpi=300, bbox_inches='tight')
-print("Capability curve saved as: capability_curve.png")
+capability_file = os.path.join(output_dir, 'capability_curve.png')
+plt.savefig(capability_file, dpi=300, bbox_inches='tight')
+print(f"Capability curve saved as: {capability_file}")
 
 plt.show()
 
