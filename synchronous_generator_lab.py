@@ -355,39 +355,39 @@ class AdvancedGeneratorGUI:
 
         # Load torque slider
         ttk.Label(slider_frame, text="Load Torque (%)").pack(anchor=tk.W)
-        self.load_slider = ttk.Scale(slider_frame, from_=0, to=150, orient=tk.HORIZONTAL,
-                                     command=self.update_load)
+        self.load_slider = ttk.Scale(slider_frame, from_=0, to=150, orient=tk.HORIZONTAL)
         self.load_slider.set(100)
         self.load_slider.pack(fill=tk.X, pady=2)
         self.load_value_label = ttk.Label(slider_frame, text="100%")
         self.load_value_label.pack(anchor=tk.W)
+        self.load_slider.config(command=self.update_load)
 
         # Field current slider
         ttk.Label(slider_frame, text="Field Current (%)").pack(anchor=tk.W, pady=(10,0))
-        self.field_slider = ttk.Scale(slider_frame, from_=50, to=150, orient=tk.HORIZONTAL,
-                                      command=self.update_field)
+        self.field_slider = ttk.Scale(slider_frame, from_=50, to=150, orient=tk.HORIZONTAL)
         self.field_slider.set(100)
         self.field_slider.pack(fill=tk.X, pady=2)
         self.field_value_label = ttk.Label(slider_frame, text="100%")
         self.field_value_label.pack(anchor=tk.W)
+        self.field_slider.config(command=self.update_field)
 
         # Speed slider
         ttk.Label(slider_frame, text="Speed (%)").pack(anchor=tk.W, pady=(10,0))
-        self.speed_slider = ttk.Scale(slider_frame, from_=80, to=120, orient=tk.HORIZONTAL,
-                                      command=self.update_speed)
+        self.speed_slider = ttk.Scale(slider_frame, from_=80, to=120, orient=tk.HORIZONTAL)
         self.speed_slider.set(100)
         self.speed_slider.pack(fill=tk.X, pady=2)
         self.speed_value_label = ttk.Label(slider_frame, text="100%")
         self.speed_value_label.pack(anchor=tk.W)
+        self.speed_slider.config(command=self.update_speed)
 
         # Temperature slider
         ttk.Label(slider_frame, text="Ambient Temp (°C)").pack(anchor=tk.W, pady=(10,0))
-        self.temp_slider = ttk.Scale(slider_frame, from_=0, to=50, orient=tk.HORIZONTAL,
-                                     command=self.update_temperature)
+        self.temp_slider = ttk.Scale(slider_frame, from_=0, to=50, orient=tk.HORIZONTAL)
         self.temp_slider.set(25)
         self.temp_slider.pack(fill=tk.X, pady=2)
         self.temp_value_label = ttk.Label(slider_frame, text="25°C")
         self.temp_value_label.pack(anchor=tk.W)
+        self.temp_slider.config(command=self.update_temperature)
 
         # Status display
         status_frame = ttk.LabelFrame(parent, text="Status", padding=5)
@@ -593,19 +593,23 @@ class AdvancedGeneratorGUI:
 
     def update_load(self, value):
         """Update load torque slider"""
-        self.load_value_label.config(text=f"{float(value):.1f}%")
+        if hasattr(self, 'load_value_label'):
+            self.load_value_label.config(text=f"{float(value):.1f}%")
 
     def update_field(self, value):
         """Update field current slider"""
-        self.field_value_label.config(text=f"{float(value):.1f}%")
+        if hasattr(self, 'field_value_label'):
+            self.field_value_label.config(text=f"{float(value):.1f}%")
 
     def update_speed(self, value):
         """Update speed slider"""
-        self.speed_value_label.config(text=f"{float(value):.1f}%")
+        if hasattr(self, 'speed_value_label'):
+            self.speed_value_label.config(text=f"{float(value):.1f}%")
 
     def update_temperature(self, value):
         """Update temperature slider"""
-        self.temp_value_label.config(text=f"{float(value):.1f}°C")
+        if hasattr(self, 'temp_value_label'):
+            self.temp_value_label.config(text=f"{float(value):.1f}°C")
 
     def update_parameters(self):
         """Update parameters from entries"""
